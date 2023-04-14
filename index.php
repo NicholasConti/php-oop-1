@@ -34,5 +34,45 @@ class Movie
 
 $gatto = new Movie('Il gatto con gli stivali', 2023, 'lorem', 'it', ['Cartone animato', 'Fanatsy', 'Avventura']);
 $rick = new Movie('Rick e Morty', 2022, 'lorem ipsum ciao', 'en', ['Cartone animato', 'Commedia']);
-var_dump($gatto);
-var_dump($rick);
+
+// echo $gatto->titolo . '<br>';
+// echo $gatto->anno . '<br>';
+// echo $gatto->trama . '<br>';
+// echo $gatto->linguaOriginale . '<br>';
+// echo $gatto->genere . '<br>';
+// echo '<br>' . '<br>';
+foreach ($gatto as $key => $value) {
+    if ($key == 'titolo') {
+        echo $value;
+    } elseif ($key == 'anno') {
+        echo $value;
+    } elseif ($key == 'trama') {
+        echo $value;
+    } elseif ($key == 'linguaOriginale') {
+        echo $value;
+    } else if ($key == 'genere') {
+        foreach ($value as $gen) {
+            echo $gen, ' ';
+        };
+        echo '<br>';
+    }
+    echo '<br>';
+}
+
+foreach ($rick as $key => $value) {
+    if ($key == 'titolo') {
+        echo $value;
+    } elseif ($key == 'anno') {
+        echo $value;
+    } elseif ($key == 'trama') {
+        echo $value;
+    } elseif ($key == 'linguaOriginale') {
+        echo $value;
+    } else if ($key == 'genere') {
+        foreach ($value as $gen) {
+            echo $gen, ' ';
+        };
+        echo '<br>';
+    }
+    echo '<br>';
+}
