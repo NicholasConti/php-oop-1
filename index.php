@@ -1,39 +1,24 @@
 <?php
-class Movie
-{
-    public $titolo;
-    public $anno;
-    public $trama;
-    public $linguaOriginale;
-    public $genere;
+require_once __DIR__ . '/Models/Movie.php';
+require_once __DIR__ . '/Models/Generi.php';
 
-    public function __construct($_title, int $_year, $_story, $_ogLang, array $_gen)
-    {
-        $this->titolo = $_title;
-        $this->anno = $_year;
-        $this->trama = $_story;
-        $this->changeLanguage($_ogLang);
-        $this->genere = $_gen;
-    }
+// genere del primo film
+$genGatto = [
+    new Generi('Cartone-Animato'),
+    new Generi('Fanatsy'),
+    new Generi('Avventura')
+];
+//istanza primo film
+$gatto = new Movie('Il gatto con gli stivali', 2023, 'lorem', 'it', $genGatto);
 
-    public function changeLanguage($lang)
-    {
-        if (($lang === 'it') || ($lang === 'IT')) {
-            $lang = 'Italiano';
-        } elseif (($lang === 'en') || ($lang === 'EN')) {
-            $lang = 'Inglese';
-        } elseif (($lang === 'jp') || ($lang === 'JP')) {
-            $lang = 'Giapponese';
-        } elseif (($lang === 'kr') || ($lang === 'KR')) {
-            $lang = 'Koreano';
-        }
+// genere del secondo film
+$genRick = [
+    new Generi('Cartone-Animato'),
+    new Generi('Commedia')
+];
 
-        return $this->linguaOriginale = $lang;
-    }
-}
-
-$gatto = new Movie('Il gatto con gli stivali', 2023, 'lorem', 'it', ['Cartone animato', 'Fanatsy', 'Avventura']);
-$rick = new Movie('Rick e Morty', 2022, 'lorem ipsum ciao', 'en', ['Cartone animato', 'Commedia']);
+//istanza secondo film
+$rick = new Movie('Rick e Morty', 2022, 'lorem ipsum ciao', 'en', $genRick);
 
 // echo $gatto->titolo . '<br>';
 // echo $gatto->anno . '<br>';
@@ -41,6 +26,7 @@ $rick = new Movie('Rick e Morty', 2022, 'lorem ipsum ciao', 'en', ['Cartone anim
 // echo $gatto->linguaOriginale . '<br>';
 // echo $gatto->genere . '<br>';
 // echo '<br>' . '<br>';
+//if ($genGatto instanceof Generi) {
 foreach ($gatto as $key => $value) {
     if ($key == 'titolo') {
         echo $value;
@@ -52,13 +38,13 @@ foreach ($gatto as $key => $value) {
         echo $value;
     } else if ($key == 'genere') {
         foreach ($value as $gen) {
-            echo $gen, ' ';
+            echo $gen->genere . ' ';
         };
         echo '<br>';
     }
     echo '<br>';
 }
-
+//}
 foreach ($rick as $key => $value) {
     if ($key == 'titolo') {
         echo $value;
@@ -70,7 +56,7 @@ foreach ($rick as $key => $value) {
         echo $value;
     } else if ($key == 'genere') {
         foreach ($value as $gen) {
-            echo $gen, ' ';
+            echo $gen->genere . ' ';
         };
         echo '<br>';
     }
